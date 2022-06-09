@@ -1,0 +1,103 @@
+﻿@model WebApplication1.Models.UserModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ajaxButton").click(function () {
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/User/TestMethod", //Controller and then Method
+                        data: {
+                            firstName: $("#firstName").val(),
+                            lastName: $("#lastName").val()
+                        },
+                        success: function (data) { //I am still confused with how to return the value from the TestMethod function, I would turn to a teamate for some assistance with this. 
+                            alert(data);
+                        },
+                        error: function (data) {
+                            alert("This did not run!");
+                        },
+                    });
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <form name="Form1" method="post">
+
+
+        <label>ID:</label>
+        <input type="text" id="id" name="id" placeholder='@ViewData["Id"]' />
+        <br />
+
+        <label>FirstName:</label>
+        <input type="text" id ="firstName" name="firstName" placeholder='@ViewData["FirstName"]' />
+        <br />
+
+        <label>LastName:</label>
+        <input type="text" id ="lastName" name="lastName" placeholder='@ViewData["LastName"]' />
+        <br />
+
+        <label>Age:</label>
+        <input type="text" id ="age" name="age" placeholder='@ViewData["Age"]' />
+        <br />
+
+        <label>RegisteredDate:</label>
+        <input type="text" id ="registeredDate" name="registeredDate" placeholder='@ViewData["RegisteredDate"]' />
+        <br />
+        <!-- Unsure how to utilize the Html.BeginFor -->
+
+        <button type="submit" class="submitBtn" onclick='@using (Html.BeginForm("Index", "User")) { })' > Submit</button>
+        <button type="button" class="ajaxBtn" id="ajaxButton" >Ajax Submit</button>
+        <br />
+    </form>
+    <br />
+    <br />
+</body>
+<br />
+
+
+
+<style>
+
+form {
+                    margin-top: 16px;
+                }
+
+                button {
+        display: inline-block;
+        float: left;
+        clear: left;
+        text-align: left;
+    }
+
+            label {
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 250px;
+        text-align: left;
+    }
+
+        input {
+        display: inline-block;
+            float: left;
+        }
+
+</style>
+
+
+
+
