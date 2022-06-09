@@ -34,35 +34,36 @@
 
 </head>
 <body>
-
-    <form name="Form1" method="post">
+    @using (Html.BeginForm("Index", "User", FormMethod.Post))
+    {
 
 
         <label>ID:</label>
-        <input type="text" id="id" name="id" placeholder='@ViewData["Id"]' />
+        <input type="text" id="id" name="id" placeholder='@Html.DisplayFor(m => m.Id)' />
         <br />
 
         <label>FirstName:</label>
-        <input type="text" id ="firstName" name="firstName" placeholder='@ViewData["FirstName"]' />
+        <input type="text" id="firstName" name="firstName" placeholder='@Html.DisplayFor(m => m.FirstName)' />
         <br />
 
         <label>LastName:</label>
-        <input type="text" id ="lastName" name="lastName" placeholder='@ViewData["LastName"]' />
+        <input type="text" id="lastName" name="lastName" placeholder='@Html.DisplayFor(m => m.LastName)' />
         <br />
 
         <label>Age:</label>
-        <input type="text" id ="age" name="age" placeholder='@ViewData["Age"]' />
+        <input type="text" id="age" name="age" placeholder='@Html.DisplayFor(m => m.Age)' />
         <br />
 
         <label>RegisteredDate:</label>
-        <input type="text" id ="registeredDate" name="registeredDate" placeholder='@ViewData["RegisteredDate"]' />
+        <input type="text" id="registerDate" name="registerDate" placeholder='@Html.DisplayFor(m => m.RegisterDate)' />
         <br />
         <!-- Unsure how to utilize the Html.BeginFor -->
 
-        <button type="submit" class="submitBtn" onclick='@using (Html.BeginForm("Index", "User")) { })' > Submit</button>
-        <button type="button" class="ajaxBtn" id="ajaxButton" >Ajax Submit</button>
-        <br />
-    </form>
+        <button type="submit" class="submitBtn"> Submit</button>
+    
+    <button type="button" class="ajaxBtn" id="ajaxButton">Ajax Submit</button>
+    <br />
+
     <br />
     <br />
 </body>

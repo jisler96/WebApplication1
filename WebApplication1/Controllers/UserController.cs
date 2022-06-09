@@ -19,19 +19,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Index(UserModel user)
         {
-            int userId = user.Id;
-            string firstName = user.FirstName;
-            string lastName = user.LastName;
-            byte age = user.Age;
-            DateTime registeredDate = user.RegisterDate;
-            ViewData["Id"] = userId;
-            ViewData["FirstName"] = firstName;
-            ViewData["LastName"] = lastName;
-            ViewData["Age"] = age;
-            ViewData["RegisteredDate"] = registeredDate;
-
-
-            return View() ;
+            return View(user) ;
         }
 
         public string TestMethod(string firstName, string lastName)
